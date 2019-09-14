@@ -1,0 +1,41 @@
+.img_size{
+    cursor:pointer;
+    border: none;
+    min-width: 40px;
+    max-width: 50px;
+    min-height: 40px;
+    max-height: 40px;
+    align-self: center
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.card_padding{
+    padding: 7px;
+}
+
+.starter-select{
+    font-style: italic;
+}
+
+.result{
+    color: #f00;
+    font-weight: bold;
+}
+
+#show-serv-control{
+    display: none;
+}
+
+.titulo{
+    font-style: bold;
+}
+
+.container{
+    margin: 25px;
+}
