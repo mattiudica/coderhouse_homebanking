@@ -11,22 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('pagos', 'PagosController@index');
 
-Route::get('/pagos', function () {
-    return view('pagos');
-});
+Route::get('balance', 'BalanceController@index');
 
-Route::get('/inversiones', function () {
-    return view('inversiones');
-});
-
-Route::get('/balance', function () {
-    return view('balance');
-});
+Route::get('inversiones', 'InversionesController@index');

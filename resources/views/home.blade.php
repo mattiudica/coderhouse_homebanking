@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
@@ -48,9 +48,9 @@
         <div class="row text-center justify-content-center">
             <div class="col-3">
                 <div class="card card_padding">
-                    <img src="./image/bank.png" class="card-img-top img_size" alt="...">
+                    <img src="{{ asset('image/bank.png') }}" class="card-img-top img_size" alt="...">
                     <div class="card-body">
-                        <a href="#" class="">
+                        <a href="{{ url('/pagos') }}" class="">
                             <h5 class="card-title">Pagos</h5>
                         </a>
                         <p class="card-text">Gestiona todos tus pagos desde donde estes!</p>
@@ -59,9 +59,9 @@
             </div>
             <div class="col-3">
                 <div class="card card_padding">
-                    <img src="./image/bank2.png" class="card-img-top img_size" alt="...">
+                    <img src="{{ asset('image/bank2.png') }}" class="card-img-top img_size" alt="...">
                     <div class="card-body">
-                        <a href="#" class="">
+                        <a href="{{ url('/inversiones') }}" class="">
                             <h5 class="card-title">Inversiones</h5>
                         </a>
                         <p class="card-text">Checkea las acciones al instante</p>
@@ -70,9 +70,9 @@
             </div>
             <div class="col-3">
                 <div class="card card_padding">
-                    <img src="./image/bank3.png" class="card-img-top img_size" alt="...">
+                    <img src="{{ asset('image/bank3.png') }}" class="card-img-top img_size" alt="...">
                     <div class="card-body">
-                        <a href="#" class="">
+                        <a href="{{ url('/balance') }}" class="">
                             <h5 class="card-title">Balance</h5>
                         </a>
                         <p class="card-text">Mantene el control de tus gastos de forma sencilla</p>

@@ -10,22 +10,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 
     <ul class="nav nav-tabs navbar-dark bg-dark">
         <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">Pagos</a>
+            <a class="nav-link active" href="{{ url('/pagos') }}">Pagos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Inversiones</a>
+            <a class="nav-link" href="{{ url('/inversiones') }}">Inversiones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">balance</a>
+            <a class="nav-link" href="{{ url('/balance') }}">balance</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Ayuda</a>

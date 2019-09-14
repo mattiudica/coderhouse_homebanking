@@ -10,30 +10,30 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
     <ul class="nav nav-tabs navbar-dark bg-dark">
         <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="{{ url('/') }}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Pagos</a>
+            <a class="nav-link" href="{{ url('/pagos') }}">Pagos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">Inversiones</a>
+            <a class="nav-link" href="{{ url('/inversiones') }}">Inversiones</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">balance</a>
+            <a class="nav-link active" href="{{ url('/balance') }}">balance</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Ayuda</a>
         </li>
         <li class="nav-item">
             <div class="dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Cuenta</a>
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Cuenta</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
@@ -43,44 +43,67 @@
         </li>
     </ul>
 
+
     <div class="text-center">
-        <h1 class="display-4">Inversiones</h1>
+        <h1 class="display-4">Balance Financiero</h1>
         <hr class="my-4">
     </div>
+
     <br>
     <br>
     <div class="container">
-        <table class="table table-borderless table-dark" id="invest-table">
+        <table class="table table-dark">
             <thead>
                 <tr>
-                    <th scope="col">Empresa</th>
-                    <th scope="col">Acciones</th>
-                    <th scope="col">Valor x Accion</th>
-                    <th scope="col" class="float-right">Gestionar</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Importe</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Arcor</td>
-                    <td>1000</td>
-                    <td>200</td>
-                    <td>
-                        <div class="form-group float-right">
-                            <button type="button" class="btn btn-success">Vender</button>
-                            <button type="button" class="btn btn-primary">Comprar</button>
-                        </div>
-                    </td>
-                </tr>
+                <?php
+                    class Transaccion{
+                        
+                        public $fecha;
+                        public $monto;
+                        public $descripcion;
+
+                        public function __construct($fecha, $monto, $descripcion){
+                            $this->fecha = $fecha;
+                            $this->monto = $monto;
+                            $this->descripcion = $descripcion;
+                        }
+                    }
+
+                    $nuevaOp1 = new Transaccion("19/06/2019", 1000, "Deposito");
+                    $nuevaOp2 = new Transaccion("20/06/2019",-500,"Cable");
+                    $nuevaOp3 = new Transaccion("22/06/2019",-200,"Movistar");
+                    $nuevaOp4 = new Transaccion("25/06/2019",100,"Deposito");
+
+                    $listaTransaccion = [];
+
+                    array_push($listaTransaccion,$nuevaOp1,$nuevaOp2,$nuevaOp3 ,$nuevaOp4);
+    
+                    for($i=0; $i<count($listaTransaccion);$i++){
+                        echo "<tr>
+                            <th scope='row'>". $listaTransaccion[$i]->fecha. "</th>
+                            <td>" . $listaTransaccion[$i]->descripcion. "</td>
+                            <td>" . $listaTransaccion[$i]->monto . "</td>
+                            </tr>";
+                    }                 
+                ?>
             </tbody>
         </table>
     </div>
-    <div>
-        <h1>
-            <?php
-            ?>
-        </h1>
+    <br>
+    <br>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Descarga</button>
     </div>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <footer>
         <ul class="nav navbar-dark bg-dark justify-content-center">
             <li class="nav-item">
