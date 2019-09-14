@@ -82,7 +82,7 @@ Route::get('pagos', function(){
          ],
          [
             "servicio" => "metrogas",
-            "valor" => 700,
+            "valor" => 800,
          ]
     ];
     
