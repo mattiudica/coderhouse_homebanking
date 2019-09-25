@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('pagos', 'PagosController@index');
 
+Route::get('lista_pagos', 'PagosController@payList');
+
 Route::get('balance', 'BalanceController@index');
 
 Route::get('inversiones', 'InversionesController@index');
