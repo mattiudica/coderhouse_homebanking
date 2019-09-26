@@ -1,6 +1,7 @@
 @extends('layouts.app',[
     'titlePage' => 'Balance Financiero' ])
 @section('content')
+
         <table class="table table-dark">
             <thead>
                 <tr>
@@ -10,15 +11,16 @@
                 </tr>
             </thead>
             <tbody>
-                @for ($i = 0; $i < count($listaOps); $i++)
-                    @foreach($listaOps as $op)
-                        <tr>
-                            <th scope="col">{{ $op }}</th>
-                            <th scope="col">{{ $op }}</th>
-                            <th scope="col">{{ $op }}</th>
-                        </tr>
-                    @endforeach
-                @endfor
+    
+                    @for($i = 0; $i< count($operaciones); $i++)
+                        @foreach($operaciones[$i] as $op)
+                            <tr>
+                                <th scope="col"> {{$op}} </th>
+                                <th scope="col">{{$op}}</th>
+                                <th scope="col">{{$op}}</th>
+                            </tr>
+                        @endforeach
+                    @endfor
             </tbody>
         </table>
     <br>
@@ -26,4 +28,5 @@
     <div class="text-center">
         <button type="submit" class="btn btn-primary btn-lg">Descarga</button>
     </div>
+
 @endsection

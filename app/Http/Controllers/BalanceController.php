@@ -8,35 +8,34 @@ class BalanceController extends Controller{
     
     public function index(){
 
-        $nuevaOp1 = [
+        $Op1 = [
             'fecha'=>'19/06/2019',
             'importe'=>1000,
             'concepto'=>'deposito',
         ];
         
-        $nuevaOp2 = [
+        $Op2 = [
             'fecha'=>'20/06/2019',
             'importe'=>-500,
             'concepto'=>'cable',
         ];
         
-        $nuevaOp3 = [
+        $Op3 = [
             'fecha'=>'22/06/2019',
             'importe'=>-200,
             'concepto'=>'movistar',
         ];
         
-        $nuevaOp4 = [
+        $Op4 = [
             'fecha'=>'25/06/2019',
             'importe'=>100,
             'concepto'=>'deposito',
         ];
 
         $listaOps = [];
-
-        array_push($listaOps,$nuevaOp1,$nuevaOp2,$nuevaOp3 ,$nuevaOp4);     
+        array_push($listaOps,$Op1,$Op2,$Op3 ,$Op4);
          
-        return view('balance.balance')->with($listaOps);
+        return view('balance.balance')->with('operaciones',$listaOps);
         
     }
 }
