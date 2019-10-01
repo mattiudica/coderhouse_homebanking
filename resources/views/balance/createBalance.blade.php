@@ -1,11 +1,11 @@
 @extends('layouts.app',[
     'titlePage' => 'Pago de Servicios',
     'homePage' => false,
+    'page' => 'Servicios',
     ])
 @section('content')
-<div class="container text-center">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div class="row justify-content-center text-center">
+        <div class="col-md-9">
             <div class="alert alert-success" role="alert">
                 <strong>{{ Session::get('addsuccess') }}</strong>
             </div>
@@ -26,9 +26,11 @@
                     <input type="number" class="form-control" id="importe" name="importe" required="" data-parsley-type="integer">
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success btn-lg btn-block">Pagar</button>
+                <div class="form-group">
+                    <a href="{{ url('/services/create') }}" class="btn btn-success btn-sm text-left"><=Nuevo</a>
+                    <button type="submit" class="btn btn-info btn-sm text-right">Pagar</button>   
+                </div>
             </form>
         </div>
     </div>
-</div>
 @endsection

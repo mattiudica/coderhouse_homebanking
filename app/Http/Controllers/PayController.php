@@ -17,7 +17,7 @@ class PayController extends Controller
 
         //validate data
         $this->validate($request, array(
-            'descripcion'=>'required|max:30',
+            'descripcion'=>'required|max:255',
             'referencia'=>'required|integer',
         ));
         $descripcion = $request->input('descripcion');

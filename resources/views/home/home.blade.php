@@ -1,9 +1,11 @@
 @extends('layouts.app',[
-    'titlePage' => 'Bienvenido!',
+    'titlePage' => 'Panel Usuario',
     'homePage' => true,
+    'page' => 'Panel',
      ])
 @section('content')
-<div class="container text-center">
+
+<div class="text-center">
     <div class="row  justify-content-center">
         <div class="col-3">
             <div class="card border-light card_padding  rounded-circle">
@@ -12,7 +14,7 @@
                     <a href="{{ url('/services/create') }}">
                         <h5 class="card-title">Pagos</h5>
                     </a>
-                    <p class="card-text">Gestiona todos tus pagos desde donde estes!</p>
+                    <p class="card-text">Gestiona todos tus pagos dede aqui</p>
                 </div>
             </div>
         </div>
@@ -23,7 +25,7 @@
                     <a href="{{ url('/invest/create') }}">
                         <h5 class="card-title">Inversiones</h5>
                     </a>
-                    <p class="card-text">Checkea las acciones al instante</p>
+                    <p class="card-text">Revisa tus acciones al instante</p>
                 </div>
             </div>
         </div>
@@ -34,7 +36,7 @@
                     <a href="{{ url('/balance/index') }}">
                         <h5 class="card-title">Balance</h5>
                     </a>
-                    <p class="card-text">Mantene el control de tus gastos de forma sencilla</p>
+                    <p class="card-text">Mantene control de tus gastos</p>
                 </div>
             </div>
         </div>

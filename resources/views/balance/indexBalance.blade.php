@@ -1,17 +1,26 @@
 @extends('layouts.app',[
-    'titlePage' => 'Balance Financiero',
-    'homePage' => false, ])
+    'titlePage' => 'Estado de Cuenta',
+    'homePage' => false,
+    'page' => 'Balance', ])
 @section('content')
-<div class="container text-center">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <table class="table table-dark">
+<div class="text-center">
+    <div class="form-group">
+        <h3>Cuenta 032-366474/9</h3>
+    </div>
+    <div class="form-group">
+        <strong>Caja de Ahorro en Pesos</strong>
+    </div>
+</div>
+<br>
+    <div class="row justify-content-center text-center">
+        <div class="col-md-9">
+            <table class="table table-borderless table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Importe</th>
-                        <th scope="col">Saldo</th>
+                        <th scope="col"><p class="lead">Fecha</p></th>
+                        <th scope="col"><p class="lead">Descripcion</p></th>
+                        <th scope="col"><p class="lead">Importe</p></th>
+                        <th scope="col"><p class="lead">Saldo</p></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +36,10 @@
             </table>
             <br>
             <br>
-            <div class="text-center">
-                <button type="button" class="btn btn-primary btn-lg">Descarga</button>
+            <div class="text-right">
+                <button type="button" class="btn btn-info btn-sm">Descarga</button>
             </div>
         </div>
     </div>
-</div>
+
 @endsection
