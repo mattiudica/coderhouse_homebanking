@@ -8,14 +8,14 @@
         <div class="col-md-6">
             <form action="{{ url('/services/store') }}" method="post" data-parsley-validate="">
                 @csrf
-                <div id="show-serv-control">
+                <div id="">
                     <div class="form-group row">
                             <div class="form-group col-md-6">
                                 <label for="nuevo-serv-buscar">Nuevo Servicio</label>
                                 <input type="text" class="form-control" id="nuevo-serv-buscar" placeholder="">
                             </div>
                         <div class="form-group col-md-6">
-                            <label for="nuevo-serv-cuenta">N° de Cliente / Cuenta</label>
+                            <label for="nuevo-serv-cuenta">N° de Cliente / Referencia</label>
                             <input type="text" class="form-control" id="nuevo-serv-cuenta" placeholder="">
                         </div>
                     </div>
