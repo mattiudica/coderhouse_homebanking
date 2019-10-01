@@ -17,7 +17,7 @@
                 <tbody>
                     @for($i = 0; $i< count($balances); $i++)
                         <tr>
-                            <th scope="col">{{($balances[$i]["fecha"])}}</th>
+                            <th scope="col">{{($balances[$i]["created_at"])}}</th>
                             <th scope="col">{{($balances[$i]["descripcion"])}}</th>
                             <th scope="col">{{($balances[$i]["importe"])}}</th>
                             <th scope="col">{{$saldo += $balances[$i]["importe"]}}</th>

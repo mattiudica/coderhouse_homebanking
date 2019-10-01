@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Balance;
+use App\Service;
+use Session;
 
 class BalanceController extends Controller
 {
@@ -20,31 +22,59 @@ class BalanceController extends Controller
         
     }
 
-   /* public function create(){
-        return view('form.create');
+    public function create(){
+        $services = Service::all();
         
-    }*/
+        return view('balance.createBalance')->with('services', $services);
+
+    }
 
     public function store(Request $request){ 
 
-        //validate data (ya viene validada en este caso)
+        $comprobante = random_int(999,9999);
+        //validate data
+        $this->validate($request, array(
+            'descripcion'=>'required',
+            'importe'=>'required|integer',
+        ));
 
+        $descripcion = $request->input('descripcion');
+        $descripcion = strtolower($descripcion);
+        $importe = $request->input('importe');
 
+        if($descripcion != "deposito"){
+            $importe = $importe * -1;
+        }
         //store in DB
+   
 
         $balance = new Balance();
-        $balance ->descripcion = $request->input('descripcion');
-        $balance ->importe = $request->input('importe');
-        $balance ->fecha = $request->input('fecha');
+        $balance ->descripcion = $descripcion;
+        $balance ->importe = $importe;
+        $balance ->comprobante = $comprobante;
         
 
 
         $balance->save();
 
+
+        //session flash message
+
+        Session::flash('paysuccess','Servicio pagado correctamente!');
+
         //redirect to
 
-        return redirect()->route('index');
+        return redirect()->route('last');
         
-    }    
+    }
+    
+    public function show(){ 
+
+        $last = Balance::orderBy('created_at', 'desc')->first();
+        
+        return view('balance.lastBalance')->with('last',$last);
+        
+
+    }
     
 }

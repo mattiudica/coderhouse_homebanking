@@ -17,7 +17,6 @@ class CreateServiceTable extends Migration
             $table->bigIncrements('id');
             $table->string('descripcion', 30);
             $table->integer('referencia');
-            $table->integer('importe');
             $table->timestamps();
         });
     }

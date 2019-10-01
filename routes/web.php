@@ -12,12 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index');
-
 Route::get('/invest/create', 'investController@create');
 
 Route::get('/services/create', 'PayController@create');
 Route::post('/services/store', 'PayController@store');
-Route::get('/services/last', 'PayController@index')->name('last_pay');
+Route::get('/services/services_list', 'BalanceController@create')->name('service_list');
 
 Route::post('/balance/store', 'BalanceController@store');
+Route::get('/balance/last', 'BalanceController@show')->name('last');
 Route::get('/balance/index', 'BalanceController@index')->name('index');
