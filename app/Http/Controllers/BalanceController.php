@@ -3,39 +3,48 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Balance;
 
-class BalanceController extends Controller{
-    
+class BalanceController extends Controller
+{
     public function index(){
+        $balances = Balance::all();
 
-        $Op1 = [
-            'fecha'=>'19/06/2019',
-            'importe'=>1000,
-            'concepto'=>'deposito',
-        ];
-        
-        $Op2 = [
-            'fecha'=>'20/06/2019',
-            'importe'=>-500,
-            'concepto'=>'cable',
-        ];
-        
-        $Op3 = [
-            'fecha'=>'22/06/2019',
-            'importe'=>-200,
-            'concepto'=>'movistar',
-        ];
-        
-        $Op4 = [
-            'fecha'=>'25/06/2019',
-            'importe'=>100,
-            'concepto'=>'deposito',
-        ];
+        $saldo = 0;
 
-        $listaOps = [];
-        array_push($listaOps,$Op1,$Op2,$Op3 ,$Op4);
-         
-        return view('balance.balance')->with('operaciones',$listaOps);
+        return view('balance.indexBalance')->with(array(
+            
+            'balances'=>$balances,
+            'saldo'=>$saldo
+        ));
         
     }
+
+   /* public function create(){
+        return view('form.create');
+        
+    }*/
+
+    public function store(Request $request){ 
+
+        //validate data (ya viene validada en este caso)
+
+
+        //store in DB
+
+        $balance = new Balance();
+        $balance ->descripcion = $request->input('descripcion');
+        $balance ->importe = $request->input('importe');
+        $balance ->fecha = $request->input('fecha');
+        
+
+
+        $balance->save();
+
+        //redirect to
+
+        return redirect()->route('index');
+        
+    }    
+    
 }

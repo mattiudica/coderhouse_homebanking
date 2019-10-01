@@ -13,10 +13,11 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('pagos', 'PagosController@index');
+Route::get('/invest/create', 'investController@create');
 
-Route::get('lista_pagos', 'PagosController@payList');
+Route::get('/services/create', 'PayController@create');
+Route::post('/services/store', 'PayController@store');
+Route::get('/services/last', 'PayController@index')->name('last_pay');
 
-Route::get('balance', 'BalanceController@index');
-
-Route::get('inversiones', 'InversionesController@index');
+Route::post('/balance/store', 'BalanceController@store');
+Route::get('/balance/index', 'BalanceController@index')->name('index');
