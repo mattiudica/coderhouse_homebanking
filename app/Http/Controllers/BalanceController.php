@@ -31,7 +31,13 @@ class BalanceController extends Controller
 
     public function store(Request $request){ 
 
-        $comprobante = random_int(999,9999);
+        function random_string() {
+            $rand_len = random_int(6,12); 
+            return substr(bin2hex(random_bytes($rand_len)),0, $rand_len); 
+        }
+         
+        $comprobante = random_string(); 
+
         //validate data
         $this->validate($request, array(
             'descripcion'=>'required',

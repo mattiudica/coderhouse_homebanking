@@ -17,7 +17,7 @@ class CreateBalanceTable extends Migration
             $table->bigIncrements('id');
             $table->string('descripcion',255);
             $table->integer('importe');
-            $table->string('comprobante');
+            $table->string('comprobante', 12);
             $table->timestamps();
         });
     }

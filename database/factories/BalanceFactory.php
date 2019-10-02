@@ -7,7 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Balance::class, function (Faker $faker) {
     return [
-        'descripcion' => factory(\App\Service::class)->create(),
+       
+        'descripcion' => function(){return factory(\App\Service::class)->create()->descripcion;},
         'importe' => $faker->numberBetween($min = 10000, $max = 20000),
         'comprobante' => $faker->swiftBicNumber,
     ];
