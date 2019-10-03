@@ -12,7 +12,7 @@ class BalanceController extends Controller
     private $saldo;
     
     public function index(){
-        $balances = Balance::all();
+        $balances = Balance::orderBy('id', 'desc')->paginate(10);
 
         return view('balance.indexBalance')->with(array(
             

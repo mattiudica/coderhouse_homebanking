@@ -36,6 +36,9 @@
                 </tbody>
             </table>
             <br>
+            <div class="text-center">
+                {!! $balances->links(); !!}
+            </div>
             <br>
             <div class="text-right">
                 <button type="button" class="btn btn-info btn-sm">Descarga</button>
