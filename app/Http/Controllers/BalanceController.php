@@ -9,15 +9,15 @@ use Session;
 
 class BalanceController extends Controller
 {
+    private $saldo;
+    
     public function index(){
         $balances = Balance::all();
-
-        $saldo = 0;
 
         return view('balance.indexBalance')->with(array(
             
             'balances'=>$balances,
-            'saldo'=>$saldo
+            'saldo'=> $this->saldo
         ));
         
     }
@@ -26,6 +26,19 @@ class BalanceController extends Controller
         $services = Service::all();
         
         return view('balance.createBalance')->with('services', $services);
+
+    }
+    
+    //check saldo
+    public function checkSaldo($pay){
+        $getBalnce = Balance::all();
+        $saldo = 0;
+        foreach($getBalnce as $disc){
+            $saldo += $disc->importe;
+        }
+        $saldo += $pay;
+
+        return ($saldo >0 ? true : false);
 
     }
 
@@ -51,26 +64,33 @@ class BalanceController extends Controller
         if($descripcion != "deposito"){
             $importe = $importe * -1;
         }
-        //store in DB
-   
-
-        $balance = new Balance();
-        $balance ->descripcion = $descripcion;
-        $balance ->importe = $importe;
-        $balance ->comprobante = $comprobante;
         
+        //check saldo
+        if( $this->checkSaldo($importe)){
 
+            //store in DB
 
-        $balance->save();
+            $balance = new Balance();
+            $balance ->descripcion = $descripcion;
+            $balance ->importe = $importe;
+            $balance ->comprobante = $comprobante;
+            
+            $balance->save();
+    
+            Session::flash('paysuccess','Servicio pagado correctamente!');
+    
+            //redirect to
+    
+            return redirect()->route('last');
+        
+        }else{
 
-
-        //session flash message
-
-        Session::flash('paysuccess','Servicio pagado correctamente!');
-
-        //redirect to
-
-        return redirect()->route('last');
+            //cancel pay
+            //redirect to
+    
+            Session::flash('payerror','Error al procesar pago, saldo insuficiente');
+            return redirect()->route('service_list');
+        }
         
     }
     

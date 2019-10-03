@@ -6,9 +6,16 @@
 @section('content')
     <div class="row justify-content-center text-center">
         <div class="col-md-9">
+            @if(Session::has('payerror'))
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ Session::get('payerror') }}</strong>
+            </div>
+            @endif
+            @if(Session::has('addsuccess'))
             <div class="alert alert-success" role="alert">
                 <strong>{{ Session::get('addsuccess') }}</strong>
             </div>
+            @endif
             <form action="{{ url('/balance/store') }}" method="post" data-parsley-validate="">
                 @csrf
                 <div class="form-group">
