@@ -1,7 +1,9 @@
 @extends('layouts.app',[
     'titlePage' => 'Cartera de Inversiones',
     'homePage' => false,
-    'page' => 'Cartera', ])
+    'page' => 'Cartera',
+    'jumboText' => 'Operar en el mercado bursátil se hace mediante un bróker, que se dedica a la compra y venta de acciones en nombre de su cliente según el tipo de órdenes que éste le haya dado. La nueva plataforma, Banquito Trader, facilita formación que ayuda a los usuarios a tomar las decisiones que mejor se adapten a su perfil inversor y convertirse de ese modo en su propio bróker online.'
+     ])
 @section('content')
 
 <div class="row justify-content-center text-center">

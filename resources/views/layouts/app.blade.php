@@ -14,14 +14,13 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     @if(!$homePage)
-        <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="nav-item">
+            <a class="nav-link " href="{{ url('/') }}"><strong>Home</strong></a>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/services/create') }}">Pagar Servicios</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/services/create') }}">Servicios</a>
                 </li>
                 <li>
                     <a class="nav-link" href="{{ url('/balance/index') }}">Balance</a>
@@ -40,6 +39,9 @@
     </nav>
     <div class="jumbotron text-center">
         <h1 class="display-4">{{$titlePage}}</h1>
+        @isset($jumboText)
+        <p class="lead" style="padding-top:10px">{{$jumboText}}</p>
+        @endisset
     </div>
     <br>
     <br>

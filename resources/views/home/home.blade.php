@@ -2,6 +2,7 @@
     'titlePage' => 'Panel Usuario',
     'homePage' => true,
     'page' => 'Panel',
+    'jumboText'=>'Bienvenido a tu homebanking Matias. Gestiona y controla tus operaciones desde donde estes.'
      ])
 @section('content')
 
@@ -12,7 +13,7 @@
                 <img src="{{ asset('image/bank.png') }}" class="card-img-top img_size" alt="...">
                 <div class="card-body">
                     <a href="{{ url('/services/create') }}">
-                        <h5 class="card-title">Pagos</h5>
+                        <h5 class="card-title">Servicios</h5>
                     </a>
                     <p class="card-text">Gestiona todos tus pagos dede aqui</p>
                 </div>

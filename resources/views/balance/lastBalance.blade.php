@@ -3,7 +3,7 @@
     'homePage' => false,
     'page' => 'Pago', ])
 @section('content')
-<div class="alert alert-success text-left" role="alert">
+<div class="alert alert-success text-center" role="alert">
     <strong>{{ Session::get('paysuccess') }}</strong>
 </div>
 <br>

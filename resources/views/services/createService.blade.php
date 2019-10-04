@@ -1,7 +1,8 @@
 @extends('layouts.app',[
-    'titlePage' => 'Servicios',
+    'titlePage' => 'Gestor de Servicios',
     'homePage' => false,
     'page' => 'Servicios',
+    'jumboText'=>'Plataforma de gestion de pagos. Añadi nuevos servicios a tu lista, selecciona el indicado y paga, asi de sencillo.'
     ])
 @section('content')
 
@@ -10,7 +11,7 @@
         <form action="{{ url('services/store') }}" method="post" data-parsley-validate="">
             @csrf
             <div class="form-group">
-                <label for="descripcion"><p class="lead">Servicio</p></label>
+                <label for="descripcion"><p class="lead">Nuevo Servicio</p></label>
                 <input type="text" class="form-control" id="descripcion" name="descripcion" required="" maxlength="30">
             </div>
             <div class="form-group text-center">
