@@ -10,8 +10,8 @@
         <div class="col-md-9">
             <div class="text-left">
                 <div class="form-group">
-                    <h4 style="color:blue">Cuenta 032-366474/9</h4>
-                    <h5 style="color:blue">Caja de Ahorro en Pesos<h5>
+                    <h4>Cuenta 032-366474/9</h4>
+                    <h5>Caja de Ahorro en Pesos<h5>
                     <h4 style="color:green"><strong>${{end($saldos)}}</strong></h4>
                 </div>       
             </div>
@@ -28,17 +28,17 @@
                 <tbody>
                     @foreach($balances as $each)
                         <tr>
-                            <th scope="col">{{ date('j/m/Y', strtotime($each->created_at)) }}</th>
-                            <th scope="col">{{ substr(($each->descripcion),0,12)}} {{strlen($each->descripcion) > 12 ? "..." : "" }}</th>
-                            <th scope="col">${{ $each->importe }}</th>
-                            <th scope="col" style="color:green">${{$saldos[$init--]}}</th>
+                            <td><p>{{ substr(($each->descripcion),0,12)}} {{strlen($each->descripcion) > 12 ? "..." : "" }}</p></th>
+                            <td><p>{{ date('j/m/Y', strtotime($each->created_at)) }}</p></th>
+                            <td><p>${{ $each->importe }}</p></th>
+                            <td><p style="color:green;font-weight:bold">${{$saldos[$init--]}}</p></th>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <br>
             <div class="text-center">
-               "{ !! $balances->links(); !! }""
+              "{ !! $balances->links(); !! }"
             </div>
             <br>
             <div class="text-right">

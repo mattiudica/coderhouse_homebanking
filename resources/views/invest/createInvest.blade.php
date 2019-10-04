@@ -11,23 +11,36 @@
         <table class="table table-borderless table-striped" id="invest-table">
             <thead>
                 <tr>
-                    <th scope="col"><p class="lead">Empresa</p></th>
+                    <th scope="col" class="float-left"><p class="lead">Empresa</p></th>
                     <th scope="col"><p class="lead">Acciones</p></th>
                     <th scope="col"><p class="lead">Valor</p> </th>
-                    <th scope="col" class="float-right"><p class="lead">Gestion</p> </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Arcor</strong></td>
-                    <td><strong>500</strong></td>
-                    <td><strong>25</strong></td>
-                    <td>
-                        <div class="form-group float-right">
-                            <button type="button" class="btn btn-sm btn-secondary">Vender</button>
-                            <button type="button" class="btn btn-sm btn-info">Comprar</button>
-                        </div>
+                    <td class="text-left">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="company" id="company" value="option1" aria-label="...">
+                            <label class="form-check-label" for="company" style="padding-left:5px;">Arcor</label>
+                        </div> 
                     </td>
+                    <td><p style="color:blue;font-weight:bold">500</p></td>
+                    <td><p style="color:green;font-weight:bold">25</p></td>
+                </tr>
+                <tr>
+                    <td class="text-left">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="company" id="company" value="option1" aria-label="...">
+                            <label class="form-check-label" for="company" style="padding-left:5px;">La Serenisima</label>
+                        </div> 
+                    </td>
+                    <td><p style="color:blue;font-weight:bold">200</p></td>
+                    <td><p style="color:green;font-weight:bold">70</p></td>
+                </tr>
+                <tr>
+                    <td><p class="lead">Trader</p></td>
+                    <td><button type="button" class="btn btn-sm btn-primary">Vender</button></td>
+                    <td><button type="button" class="btn btn-sm btn-success">Comprar</button></td>
                 </tr>
             </tbody>
         </table>
