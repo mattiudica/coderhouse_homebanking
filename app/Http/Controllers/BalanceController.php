@@ -9,16 +9,29 @@ use Session;
 
 class BalanceController extends Controller
 {
-    private $saldo;
     
     public function index(){
-        $balances = Balance::orderBy('id', 'desc')->paginate(10);
+        //$balances = Balance::orderBy('id', 'desc')->paginate(10);
+        $balances = Balance::all();
 
-        return view('balance.indexBalance')->with(array(
+        $saldo=0;
+        $saldos=[];
+        
+        foreach($balances as $b){
+            $saldo += $b->importe;
+            array_push($saldos, $saldo);
+        }
+        
+        $init = count($saldos)-1;
+
+        $balances_or = Balance::orderBy('id', 'desc')->get();
+        
+        return view('balance.indexBalance')->with([
             
-            'balances'=>$balances,
-            'saldo'=> $this->saldo
-        ));
+            'balances'=>$balances_or,
+            'saldos'=> $saldos,
+            'init' => $init,
+        ]); 
         
     }
 

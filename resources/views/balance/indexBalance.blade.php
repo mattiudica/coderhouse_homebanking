@@ -12,6 +12,7 @@
                 </div>
                 <div class="form-group">
                     <h5>Caja de Ahorro en Pesos<h5>
+                    <strong>{{end($saldos)}}</strong>
                 </div>
             </div>
             <br>
@@ -25,19 +26,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for($i = 0; $i< count($balances); $i++)
+                    @foreach($balances as $each)
                         <tr>
-                            <th scope="col">{{date('j/m/Y', strtotime($balances[$i]["created_at"]))}}</th>
-                            <th scope="col">{{substr(($balances[$i]["descripcion"]),0,12)}} {{strlen($balances[$i]["descripcion"]) > 12 ? "..." : ""}}</th>
-                            <th scope="col">${{($balances[$i]["importe"])}}</th>
-                            <th scope="col">${{$saldo += $balances[$i]["importe"]}}</th>
+                            <th scope="col">{{ date('j/m/Y', strtotime($each->created_at)) }}</th>
+                            <th scope="col">{{ substr(($each->descripcion),0,12)}} {{strlen($each->descripcion) > 12 ? "..." : "" }}</th>
+                            <th scope="col">${{ $each->importe }}</th>
+                            <th scope="col">{{$saldos[$init--]}}</th>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
             <br>
             <div class="text-center">
-                {!! $balances->links(); !!}
+                !! $balances->links(); !!
             </div>
             <br>
             <div class="text-right">
