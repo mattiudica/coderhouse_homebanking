@@ -4,13 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Invest;
+use App\Balance;
 //use App\Http\Resources\Change;
 
 class InvestController extends Controller
 {
     public function create(Request $request){
 
-        return view('invest.createInvest');
+        $investments = Invest::all();
+        //$saldo = BalanceController::checkSaldo($valor***);
+        
+        foreach($investments as $inv){
+            $operation = rand(1, 3);
+            if($operation == 1){
+                $inv->valor = $inv->valor / 2;
+            } else {
+                $inv->valor = $inv->valor * 2;
+            }
+            $inv->save();
+        }
+
+        return view('invest.createInvest')->with('investments', $investments);
+
+        //return view('invest.createInvest')->with(['investments' => $investments, 'saldo' => $saldo]);
     
     }
 
@@ -35,4 +51,15 @@ class InvestController extends Controller
             ]);
     
     }
-}
+    /*
+    public function buy(Request $request ){
+
+
+    }
+
+    public function sell(Request $request ){
+      
+        
+    }*/
+
+}   

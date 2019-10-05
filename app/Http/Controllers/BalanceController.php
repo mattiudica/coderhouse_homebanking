@@ -42,7 +42,7 @@ class BalanceController extends Controller
 
     }
     
-    //check saldo
+    //check saldo cambiarla a static****
     public function checkSaldo($pay){
         $getBalnce = Balance::all();
         $saldo = 0;

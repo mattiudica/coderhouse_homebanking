@@ -42,27 +42,18 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($investments as $inv)
                 <tr>
                     <td class="text-left">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" name="company" id="company" value="option1" aria-label="...">
-                            <label class="form-check-label" for="company" style="padding-left:5px;">Arcor</label>
+                            <label class="form-check-label" for="company" style="padding-left:5px;">{{$inv->empresa}}</label>
                         </div> 
                     </td>
-                    <td><p style="color:blue;font-weight:bold">500</p></td>
-                    <td><p style="color:green;font-weight:bold">25</p></td>
+                    <td><p style="color:blue;font-weight:bold">{{$inv->acciones}}</p></td>
+                    <td><p style="color:green;font-weight:bold">${{$inv->valor}}</p></td>
                 </tr>
-                <tr>
-                    <td class="text-left">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="company" id="company" value="option1" aria-label="...">
-                            <label class="form-check-label" for="company" style="padding-left:5px;">La Serenisima</label>
-                        </div> 
-                    </td>
-                    <td><p style="color:blue;font-weight:bold">200</p></td>
-                    <td><p style="color:green;font-weight:bold">70</p></td>
-                </tr>
-                <tr>
+                @endforeach
                     <td><p class="lead">Trader</p></td>
                     <td><button type="button" class="btn btn-sm btn-primary">Vender</button></td>
                     <td><button type="button" class="btn btn-sm btn-success">Comprar</button></td>
