@@ -12,7 +12,9 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/invest/create', 'investController@create');
+
+Route::get('/invest/create', 'investController@create')->name('invest');
+Route::post('invest/change', 'investController@change');
 
 Route::get('/services/create', 'PayController@create');
 Route::post('/services/store', 'PayController@store');

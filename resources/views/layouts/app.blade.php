@@ -44,9 +44,7 @@
         @endisset
     </div>
     <br>
-    <br>
     @yield('content')
-    <br>
     <br>
     <br>
     <br>

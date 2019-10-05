@@ -2,12 +2,37 @@
     'titlePage' => 'Cartera de Inversiones',
     'homePage' => false,
     'page' => 'Cartera',
-    'jumboText' => 'Operar en el mercado bursátil se hace mediante un bróker, que se dedica a la compra y venta de acciones en nombre de su cliente según el tipo de órdenes que éste le haya dado. La nueva plataforma, Banquito Trader, facilita formación que ayuda a los usuarios a tomar las decisiones que mejor se adapten a su perfil inversor y convertirse de ese modo en su propio bróker online.'
+    'jumboText' => 'La nueva plataforma, Banquito Trader, facilita formación que ayuda a los usuarios a tomar las decisiones que mejor se adapten a su perfil inversor y convertirse de ese modo en su propio bróker online.'
      ])
 @section('content')
 
 <div class="row justify-content-center text-center">
     <div class="col-md-9">
+
+        <nav class="navbar navbar-light justify-content-end" style="background-color: #e3f2fd;margin-bottom:40px">
+            <form class="form-inline" action= "{{ url('invest/change') }}" method="post">
+                <select class="custom-select" name="source" id="source">
+                    <option value="USD">USD</option>
+                    <option value="ARS">ARS</option>
+                    <option value="EUR">EUR</option>
+                    <option value="BRL">BRL</option>
+                </select>
+                <div class="nav-item nav-link disabled">/</div>
+                <select class="custom-select" name="target" id="target">
+                    <option value="ARS">ARS</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="BRL">BRL</option>
+                </select>
+                <button type="submit" class="btn btn-link">Cambio</button>
+            </form>
+            @isset($target)
+                    <div class="nav-item nav-link">{{ $target }} {{$amount}}</div>
+            @endisset
+        </nav>
+
+
+
         <table class="table table-borderless table-striped" id="invest-table">
             <thead>
                 <tr>
@@ -45,6 +70,15 @@
             </tbody>
         </table>
     </div>
+</div>
+
+
+<br>
+<br>
+
+
+<div class="text-center" style="margin-top:60px;">
+    La <a href="https://cambio.today">conversión moneda</a> proporcionada por cambio.today.
 </div>
 
 @endsection
