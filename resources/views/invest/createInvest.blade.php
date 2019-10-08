@@ -10,7 +10,7 @@
     <div class="col-md-9">
 
         <nav class="navbar navbar-light justify-content-end" style="background-color: #e3f2fd;margin-bottom:40px">
-            <form class="form-inline" action= "{{ url('invest/change') }}" method="post">
+            <form method='post' class="form-inline" action= "{{ url('invest/create/coin') }}" >
                 <select class="custom-select" name="source" id="source">
                     <option value="USD">USD</option>
                     <option value="ARS">ARS</option>
@@ -26,8 +26,14 @@
                 </select>
                 <button type="submit" class="btn btn-link">Cambio</button>
             </form>
-            @isset($target)
-                    <div class="nav-item nav-link">{{ $target }} {{$amount}}</div>
+            @isset($passDatos)
+                @foreach($passDatos as $dato)
+                
+                {{-- CUANDO QUIERO IMPRIMIR EL VALUE DEL JSON DECODIFICADO TIRAR UN ERROR OFFSET --}}
+                {{-- PERO CUANDO HAGO UN DD() MUESTRA EL VALOR CORRECTO Y NO ENTIENDO PORQUE --}}
+                
+                    <div class="nav-item nav-link"> {{ $dato[value] }} </div>
+                @endforeach
             @endisset
         </nav>
 

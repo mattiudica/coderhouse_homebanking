@@ -13,15 +13,16 @@ class BalanceController extends Controller
     public function index(){
         //$balances = Balance::orderBy('id', 'desc')->paginate(10);
         $balances = Balance::all();
-
+        //inicializo el saldo en 0, el array saldos[] va a guardar cada saldo actualizado por operacion
         $saldo=0;
         $saldos=[];
         
         foreach($balances as $b){
             $saldo += $b->importe;
+            //guardo los saldos
             array_push($saldos, $saldo);
         }
-        
+        //lo uso como contador para ordenar los saldos acorde su pago en el balance de forma desc
         $init = count($saldos)-1;
 
         $balances_or = Balance::orderBy('id', 'desc')->get();
@@ -35,6 +36,8 @@ class BalanceController extends Controller
         
     }
 
+    //la creacion de un nuevo balance como tal no existe ya que es solo un operacion de actualizacion,
+    //lo que se crea es un nuevo pago de servicio
     public function create(){
         $services = Service::all();
         
@@ -42,16 +45,15 @@ class BalanceController extends Controller
 
     }
     
-    //check saldo cambiarla a static****
-    public function checkSaldo($pay){
+    //funcion para chekear que el saldo actual es positivo y mayor o igual al pago que intento hacer
+    public static function checkSaldo($pay){
         $getBalnce = Balance::all();
         $saldo = 0;
-        foreach($getBalnce as $disc){
-            $saldo += $disc->importe;
+        foreach($getBalnce as $desc){
+            $saldo += $desc->importe;
         }
-        $saldo += $pay;
 
-        return ($saldo >0 ? true : false);
+        return ($saldo >= $pay ? true : false);
 
     }
 
@@ -92,21 +94,22 @@ class BalanceController extends Controller
     
             Session::flash('paysuccess','Servicio pagado correctamente!');
     
-            //redirect to
+            //redir al detalle del ultimo pago con mensaje de exito
     
             return redirect()->route('last');
         
         }else{
 
             //cancel pay
-            //redirect to
+            //redir a la lista de pagos con mensaje de error
     
             Session::flash('payerror','Error al procesar pago, saldo insuficiente');
             return redirect()->route('service_list');
         }
         
     }
-    
+
+    //como aun no usabamos los controlladores resource cree un show() "casero" al ultimo pago
     public function show(){ 
 
         $last = Balance::orderBy('created_at', 'desc')->first();
