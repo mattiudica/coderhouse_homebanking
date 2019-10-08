@@ -52,8 +52,9 @@ class BalanceController extends Controller
         foreach($getBalnce as $desc){
             $saldo += $desc->importe;
         }
+        $saldo += $pay;
 
-        return ($saldo >= $pay ? true : false);
+        return ($saldo >= 0 ? true : false);
 
     }
 

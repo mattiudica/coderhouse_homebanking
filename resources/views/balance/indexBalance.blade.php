@@ -38,7 +38,9 @@
             </table>
             <br>
             <div class="text-center">
-              "{ !! $balances->links(); !! }"
+                {{-- ESTOS LINKS ERAN PARA PAGINAR AUTOMATICAMENTE CON EL PAGINATE() DE BALANCECONTROLLER --}}
+                {{-- PERO POR COMO MANEJO LOS SALDOS PIERDE LA REFERENCIA AL CAMBIAR DE PAG --}}
+                                 {{-- !! $balances->links(); !! --}}
             </div>
             <br>
             <div class="text-right">
