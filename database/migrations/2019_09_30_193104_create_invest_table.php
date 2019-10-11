@@ -17,6 +17,7 @@ class CreateInvestTable extends Migration
             $table->bigIncrements('id');
             $table->string('empresa', 30);
             $table->integer('acciones');
+            $table->integer('total');
             $table->integer('valor');
             $table->timestamps();
         });

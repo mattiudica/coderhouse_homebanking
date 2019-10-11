@@ -26,46 +26,37 @@
                 </select>
                 <button type="submit" class="btn btn-link">Cambio</button>
             </form>
-            @isset($passDatos)
-                @foreach($passDatos as $dato)
-                
-                {{-- CUANDO QUIERO IMPRIMIR EL VALUE DEL JSON DECODIFICADO TIRAR UN ERROR OFFSET --}}
-                {{-- PERO CUANDO HAGO UN DD() MUESTRA EL VALOR CORRECTO Y NO ENTIENDO PORQUE --}}
-                
-                    <div class="nav-item nav-link"> {{ $dato[value] }} </div>
+            @isset($getDatos)                
+                @foreach($getDatos as $dato)
+                        {{ $dato["value"] }}
+                        <div class="nav-item nav-link"> </div>
                 @endforeach
             @endisset
         </nav>
 
-
-
-        <table class="table table-borderless table-striped" id="invest-table">
-            <thead>
-                <tr>
-                    <th scope="col" class="float-left"><p class="lead">Empresa</p></th>
-                    <th scope="col"><p class="lead">Acciones</p></th>
-                    <th scope="col"><p class="lead">Valor</p> </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($investments as $inv)
-                <tr>
-                    <td class="text-left">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="company" id="company" value="option1" aria-label="...">
-                            <label class="form-check-label" for="company" style="padding-left:5px;">{{$inv->empresa}}</label>
-                        </div> 
-                    </td>
-                    <td><p style="color:blue;font-weight:bold">{{$inv->acciones}}</p></td>
-                    <td><p style="color:green;font-weight:bold">${{$inv->valor}}</p></td>
-                </tr>
-                @endforeach
-                    <td><p class="lead">Trader</p></td>
-                    <td><button type="button" class="btn btn-sm btn-primary">Vender</button></td>
-                    <td><button type="button" class="btn btn-sm btn-success">Comprar</button></td>
-                </tr>
-            </tbody>
-        </table>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Acciones</th>
+                        <th scope="col">Valor de Acción</th>
+                        <th class="text-right" scope="col">Compraventa de Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($investments as $inv)
+                        <tr>
+                            <td>{{$inv->empresa}}</td>
+                            <td>{{$inv->acciones}} / {{$inv->total}}</td>
+                            <td>{{$inv->valor}}</td>
+                            <td class="text-right">
+                                <a href="{{ route('investment.buy', ['id' => $inv->id]) }}" class="btn btn-primary">Comprar</a>
+                                <a href="{{ route('investment.sell', ['id' => $inv->id]) }}" class="btn btn-primary">Vender</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
     </div>
 </div>
 

@@ -14,7 +14,9 @@
 Route::get('/', 'HomeController@index');
 
 Route::get('/invest/create', 'investController@create');
-Route::post('/invest/create/coin', 'investController@getCoin');
+//Route::post('/invest/create/coin', 'investController@getCoin');
+Route::get('investments/buy/{id}', 'InvestController@buy')->name('investment.buy');
+Route::get('investments/sell/{id}', 'InvestController@sell')->name('investment.sell');
 
 
 Route::get('/services/create', 'PayController@create');
